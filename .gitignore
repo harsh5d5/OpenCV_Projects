@@ -1,0 +1,10 @@
+# Mediapipe Models
+hand_landmarker.task
+
+# Python caches
+__pycache__/
+*.py[cod]
+
+# IDE settings
+.vscode/
+.idea/
