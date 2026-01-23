@@ -47,4 +47,23 @@ Once the script is running, open **Hill Climb Racing** and use these gestures in
 4. Press **'q'** on the camera window to stop the script.
 
 ---
-Developed as a Computer Vision Mini-Project. Enjoy racing with your hands! 🏁
+## Eye-Blink Controlled Flappy Bird 👁️🐦
+Located in the `/flappy` directory.
+
+### ✨ Features
+- **Dual-Eye Tracking**: Uses modern MediaPipe Face Mesh to monitor both eyes.
+- **Blink-to-Jump**: Simulates the `Space` bar for Flappy Bird.
+- **Live Calibration**: Shows real-time EAR (Eye Aspect Ratio) values on screen.
+
+### 🎮 How to Control
+| Action | Gesture | Command |
+| :--- | :--- | :--- |
+| **Jump** | Blink Both Eyes | Space Bar |
+
+### 🛠️ Required Library
+```bash
+pip install mediapipe opencv-python pyautogui
+```
+
+---
+Developed as a Computer Vision Mini-Project. Enjoy racing and flying with your eyes and hands! 🏁

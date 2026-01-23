@@ -9,7 +9,7 @@ import numpy as np
 import os
 import urllib.request
 
-# pyautogui optimizations for games  
+# pyautogui optimizations for games
 pyautogui.PAUSE = 0
 pyautogui.FAILSAFE = False
 
@@ -43,6 +43,10 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 def count_fingers(landmarks, hand_label):
     fingers = []
     # Thumb Detection (Handedness aware)
+    # MediaPipe reports the actual hand (Right/Left)
+    # In a mirrored image (cv2.flip 1):
+    # - Right hand thumb is on the LEFT of the palm (x_tip < x_joint)
+    # - Left hand thumb is on the RIGHT of the palm (x_tip > x_joint)
     if hand_label == "Right":
         if landmarks[4].x < landmarks[3].x:
             fingers.append(1)
@@ -54,7 +58,7 @@ def count_fingers(landmarks, hand_label):
         else:
             fingers.append(0)
 
-    # Other 4 fingers
+    # Other 4 fingers (Same for both hands)
     for tip, pip in [(8, 6), (12, 10), (16, 14), (20, 18)]:
         if landmarks[tip].y < landmarks[pip].y:
             fingers.append(1)
@@ -103,15 +107,20 @@ while cap.isOpened():
         for i, hand_landmarks in enumerate(detection_result.hand_landmarks):
             handedness = detection_result.handedness[i]
             hand_type = draw_landmarks(frame, hand_landmarks, handedness)
+            
+            # Count fingers using handedness info
             totalFingers = count_fingers(hand_landmarks, hand_type)
             
             cv2.putText(frame, f'Fingers: {totalFingers}', (20, 40), cv2.FONT_HERSHEY_PLAIN, 2, (0, 255, 0), 2)
 
+            # Logic for Hill Climb Racing
+            # Trigger GAS on 4 or 5 fingers for better reliability
             if totalFingers >= 4:
                 new_state = "GAS"
             elif totalFingers == 0:
                 new_state = "BRAKE"
 
+    # Minimal key command logic
     if new_state != current_state:
         if new_state == "GAS":
             pyautogui.keyUp('left')
@@ -124,6 +133,7 @@ while cap.isOpened():
             pyautogui.keyUp('left')
         current_state = new_state
 
+    # HUD Visuals
     color = (0, 255, 0) if current_state == "GAS" else (0, 0, 255) if current_state == "BRAKE" else (200, 200, 200)
     cv2.putText(frame, f"STATUS: {current_state}", (20, 80), cv2.FONT_HERSHEY_PLAIN, 2, color, 2)
 
@@ -135,3 +145,6 @@ pyautogui.keyUp('left')
 detector.close()
 cap.release()
 cv2.destroyAllWindows()
+
+
+
