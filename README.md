@@ -1,69 +1,55 @@
-# Hand-Controlled Hill Climb Racing 🏎️✋
+# OpenCV Projects
 
-This mini-project allows you to control the **Hill Climb Racing** game using hand gestures via your webcam. It uses **OpenCV** for computer vision, **MediaPipe** for hand tracking, and **PyAutoGUI** to simulate keyboard presses.
+A collection of Computer Vision projects implementing various features like hand tracking, gesture-based control, and object movement.
 
-## ✨ Features
-- **Python 3.13 Compatible**: Uses the modern MediaPipe Tasks API.
-- **High Performance**: Optimized for fast FPS and low latency.
-- **Handedness Aware**: Works perfectly with both Left and Right hands.
-- **Visual HUD**: Real-time display of hand skeleton, bounding box, and game status (GAS/BRAKE).
+## 🚀 About Computer Vision
 
-## 🛠️ Required Versions & Libraries
-This project requires specific versions for full compatibility:
+Computer Vision (CV) is a field of artificial intelligence that enables computers and systems to derive meaningful information from digital images, videos, and other visual inputs.
 
-- 🐍 **Python**: `v3.13.9`
-- 🤖 **MediaPipe**: `v0.10.31`
-- 📷 **OpenCV**: `v4.10.x`
-- ⌨️ **PyAutoGUI**: `v0.9.54`
-- 🔢 **NumPy**: `v2.x`
+### 🖼️ OpenCV (Open Source Computer Vision Library)
+OpenCV is the most popular library for real-time computer vision. It contains thousands of optimized algorithms for:
+- **Image Processing**: Filtering, transformations, and color space conversions.
+- **Feature Detection**: Detection of corners, blobs, and lines.
+- **Object Detection**: Detecting pre-defined shapes or objects.
+- **Video Analysis**: Motion tracking and background subtraction.
 
-## 🚀 Installation
+### 🐍 Pillow (PIL Fork)
+Pillow is a powerful library for opening, manipulating, and saving many different image file formats. While OpenCV is better for real-time processing, Pillow is excellent for:
+- Simple batch processing.
+- Image archiving.
+- Drawing text and Basic shapes on images.
+- Basic transformations like resizing and rotating.
 
-Open your terminal or Anaconda Prompt and run:
+### 🤖 Object Detection Models: YOLO & DETR
 
-```bash
-pip install opencv-python mediapipe pyautogui numpy
-```
+#### YOLO (You Only Look Once)
+YOLO is a state-of-the-art, real-time object detection system. It is incredibly fast and accurate because it treats detection as a single regression problem, straight from image pixels to bounding box coordinates and class probabilities.
 
-> [!NOTE]
-> The script will automatically download the required AI model file (`hand_landmarker.task`) the first time you run it.
-
-## 🎮 How to Control
-Once the script is running, open **Hill Climb Racing** and use these gestures in front of your webcam:
-
-| Gesture | Hand State | Action | In-Game Command |
-| :--- | :--- | :--- | :--- |
-| **Open Hand** | 4 or 5 Fingers Up | **GAS** | Right Arrow Key |
-| **Fist** | 0 Fingers Up | **BRAKE / REVERSE** | Left Arrow Key |
-| **Others** | 1 to 3 Fingers Up | **IDLE** | Release all keys |
-
-## 🏃 How to Run
-1. Start the Hill Climb Racing game.
-2. Run the Python script:
-   ```bash
-   python hill_climbe_racing.py
-   ```
-3. Position your hand in the camera view.
-4. Press **'q'** on the camera window to stop the script.
+#### DETR (DEtection TRansformer)
+DETR is a transformer-based approach to object detection. It simplifies the detection pipeline by removing the need for many hand-designed components like non-maximum suppression or anchor generation.
 
 ---
-## Eye-Blink Controlled Flappy Bird 👁️🐦
-Located in the `/flappy` directory.
 
-### ✨ Features
-- **Dual-Eye Tracking**: Uses modern MediaPipe Face Mesh to monitor both eyes.
-- **Blink-to-Jump**: Simulates the `Space` bar for Flappy Bird.
-- **Live Calibration**: Shows real-time EAR (Eye Aspect Ratio) values on screen.
+## 📂 Included Projects
 
-### 🎮 How to Control
-| Action | Gesture | Command |
-| :--- | :--- | :--- |
-| **Jump** | Blink Both Eyes | Space Bar |
+### 1. Hand Box Moving (`Hand_box_moveing`)
+An interactive project where users can move a virtual box on the screen using hand gestures detected via a webcam.
 
-### 🛠️ Required Library
-```bash
-pip install mediapipe opencv-python pyautogui
-```
+### 2. PPT Controller (`ppt_controller`)
+Easily navigate through PowerPoint presentations using hand gestures. No need for a remote or mouse!
+
+### 3. Virtual Mouse (`virtual_mouse`)
+Control your computer's cursor and perform clicks using hand movements. A touchless way to interact with your machine.
 
 ---
-Developed as a Computer Vision Mini-Project. Enjoy racing and flying with your eyes and hands! 🏁
+
+## 🛠️ Requirements
+
+- Python 3.x
+- OpenCV (`opencv-python`)
+- MediaPipe
+- PyAutoGUI (for mouse control)
+- Pillow
+
+## 📜 License
+This repository is open-source. Feel free to use and contribute!
