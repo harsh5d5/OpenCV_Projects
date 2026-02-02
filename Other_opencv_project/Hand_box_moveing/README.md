@@ -14,3 +14,4 @@ A foundational CV project for understanding spatial relationships and proximity.
 
 ---
 *Version 1.0 - CV Fundamentals*
+
